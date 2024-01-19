@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { Layout as AntLayout } from "antd";
 import styles from "./index.module.css";
 import AppHeader from "../AppHeader";
-const { Header, Content, Sider } = AntLayout;
+const { Header, Content } = AntLayout;
 
 interface IProps {
   children: ReactNode;
@@ -15,9 +15,6 @@ const Layout: React.FC<IProps> = ({ children }) => {
         <AppHeader />
       </Header>
       <AntLayout>
-        <Sider className={styles.sider} width={200}>
-          Aside
-        </Sider>
         <Content className={styles.content}>{children}</Content>
       </AntLayout>
     </AntLayout>

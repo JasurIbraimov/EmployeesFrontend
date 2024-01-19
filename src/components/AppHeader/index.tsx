@@ -14,23 +14,29 @@ const AppHeader = () => {
       <Flex align="center" justify="space-between">
         <Space className={styles.space}>
           <Link to={routes.home}>
-            <Flex align="center">
-              <TeamOutlined className={styles.teamIcon} />
-              <AppButton type="link">Employees</AppButton>
-            </Flex>
+            <AppButton
+              type="link"
+              icon={<TeamOutlined className={styles.teamIcon} />}
+            >
+              Employees
+            </AppButton>
           </Link>
         </Space>
 
         <Space className={styles.space}>
           <Link to={routes.register}>
-            <AppButton type="primary">
-              <UserAddOutlined className={styles.teamIcon} />
+            <AppButton
+              type="primary"
+              icon={<UserAddOutlined className={styles.teamIcon} />}
+            >
               Register
             </AppButton>
           </Link>
           <Link to={routes.login}>
-            <AppButton type="default">
-              <LoginOutlined className={styles.teamIcon} />
+            <AppButton
+              type="default"
+              icon={<LoginOutlined className={styles.teamIcon} />}
+            >
               Login
             </AppButton>
           </Link>
