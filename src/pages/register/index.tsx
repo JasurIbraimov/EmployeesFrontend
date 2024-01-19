@@ -1,5 +1,7 @@
+import AppLayout from "../../components/AppLayout";
+
 const Register = () => {
-  return <div>Register</div>;
+  return <AppLayout>Register</AppLayout>;
 };
 
 export default Register;

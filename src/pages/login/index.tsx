@@ -1,7 +1,7 @@
-import Layout from "../../components/Layout";
+import AppLayout from "../../components/AppLayout";
 
 const Login = () => {
-  return <Layout>Login</Layout>;
+  return <AppLayout>Login</AppLayout>;
 };
 
 export default Login;

@@ -18,7 +18,7 @@ const Layout: React.FC<IProps> = ({ children }) => {
         <Sider className={styles.sider} width={200}>
           Aside
         </Sider>
-        <Content className={styles.content}>Content</Content>
+        <Content className={styles.content}>{children}</Content>
       </AntLayout>
     </AntLayout>
   );

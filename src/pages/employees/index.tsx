@@ -1,7 +1,7 @@
-import React from "react";
+import AppLayout from "../../components/AppLayout";
 
 const Employees = () => {
-  return <div>Employees</div>;
+  return <AppLayout>Employees</AppLayout>;
 };
 
 export default Employees;

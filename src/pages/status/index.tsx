@@ -1,7 +1,7 @@
-import React from "react";
+import AppLayout from "../../components/AppLayout";
 
 const Status = () => {
-  return <div>Status Page</div>;
+  return <AppLayout>Status Page</AppLayout>;
 };
 
 export default Status;
