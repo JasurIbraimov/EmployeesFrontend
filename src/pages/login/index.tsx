@@ -1,16 +1,20 @@
-import { Typography, Form, Flex, Space, message, Spin } from "antd";
+import { Typography, Form, Flex, Space } from "antd";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { useLoginMutation } from "../../app/services/auth";
+import { UserData } from "../../app/services/types";
 import AppLayout from "../../components/AppLayout";
 import AppInput from "../../components/AppInput";
 import PasswordInput from "../../components/PasswordInput";
 import AppButton from "../../components/AppButton";
-import { Link } from "react-router-dom";
-import routes from "../../path";
-import { UserData } from "../../app/services/types";
-import { useLoginMutation } from "../../app/services/auth";
-import { isErrorWithMessage } from "../../utils/error";
-import { useState } from "react";
 import ErrorMessage from "../../components/ErrorMessage";
+import { isErrorWithMessage } from "../../utils/error";
+import routes from "../../routes";
+
 const Login = () => {
+  const navigate = useNavigate();
   const [loginUser, loginUserResult] = useLoginMutation();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -19,8 +23,10 @@ const Login = () => {
     setLoading(true);
     try {
       await loginUser(data).unwrap();
+      navigate(routes.employees);
     } catch (error) {
       const isError = isErrorWithMessage(error);
+      console.log(error);
       if (isError) {
         setError(error.data.message);
       } else {

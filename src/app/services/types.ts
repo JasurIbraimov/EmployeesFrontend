@@ -1,4 +1,11 @@
-export interface EmployeeData {}
+export interface EmployeeData {
+  id: string;
+  firstName: string;
+  lastName: string;
+  age: string;
+  address: string;
+  userId: string;
+}
 export interface UserData {
   email: string;
   password: string;

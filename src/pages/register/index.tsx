@@ -4,7 +4,7 @@ import AppInput from "../../components/AppInput";
 import PasswordInput from "../../components/PasswordInput";
 import AppButton from "../../components/AppButton";
 import { Link } from "react-router-dom";
-import routes from "../../path";
+import routes from "../../routes";
 const Register = () => {
   return (
     <AppLayout>

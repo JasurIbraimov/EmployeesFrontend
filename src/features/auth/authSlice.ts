@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { authApi } from "../../app/services/auth";
+import { current, login, register } from "../../app/services/auth";
 import { RootState } from "../../app/store";
 import { ResponseLoginData } from "../../app/services/types";
 
@@ -21,18 +21,15 @@ const slice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addMatcher(authApi.endpoints.login.matchFulfilled, (state, action) => {
+      .addMatcher(login.matchFulfilled, (state, action) => {
         state.user = action.payload;
         state.isAuthenticated = true;
       })
-      .addMatcher(
-        authApi.endpoints.register.matchFulfilled,
-        (state, action) => {
-          state.user = action.payload;
-          state.isAuthenticated = true;
-        }
-      )
-      .addMatcher(authApi.endpoints.current.matchFulfilled, (state, action) => {
+      .addMatcher(register.matchFulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isAuthenticated = true;
+      })
+      .addMatcher(current.matchFulfilled, (state, action) => {
         state.user = action.payload;
         state.isAuthenticated = true;
       });

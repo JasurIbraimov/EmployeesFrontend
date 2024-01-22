@@ -1,7 +1,7 @@
 import { Button, ButtonProps, Flex } from "antd";
 import { ReactNode } from "react";
 interface IAppButtonProps extends ButtonProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const AppButton: React.FC<IAppButtonProps> = ({

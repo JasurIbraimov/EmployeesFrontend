@@ -4,16 +4,19 @@ import {
   LoginOutlined,
 } from "@ant-design/icons";
 import styles from "./index.module.css";
-import { Typography, Space, Flex } from "antd";
+import { Space, Flex } from "antd";
 import AppButton from "../AppButton";
 import { Link } from "react-router-dom";
-import routes from "../../path";
+import routes from "../../routes";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../features/auth/authSlice";
 const AppHeader = () => {
+  const user = useSelector(selectUser);
   return (
     <div className={styles.header}>
       <Flex align="center" justify="space-between">
         <Space className={styles.space}>
-          <Link to={routes.home}>
+          <Link to={routes.employees}>
             <AppButton
               type="link"
               icon={<TeamOutlined className={styles.teamIcon} />}
@@ -23,24 +26,26 @@ const AppHeader = () => {
           </Link>
         </Space>
 
-        <Space className={styles.space}>
-          <Link to={routes.register}>
-            <AppButton
-              type="primary"
-              icon={<UserAddOutlined className={styles.teamIcon} />}
-            >
-              Register
-            </AppButton>
-          </Link>
-          <Link to={routes.login}>
-            <AppButton
-              type="default"
-              icon={<LoginOutlined className={styles.teamIcon} />}
-            >
-              Login
-            </AppButton>
-          </Link>
-        </Space>
+        {!user && (
+          <Space className={styles.space}>
+            <Link to={routes.register}>
+              <AppButton
+                type="primary"
+                icon={<UserAddOutlined className={styles.teamIcon} />}
+              >
+                Register
+              </AppButton>
+            </Link>
+            <Link to={routes.login}>
+              <AppButton
+                type="default"
+                icon={<LoginOutlined className={styles.teamIcon} />}
+              >
+                Login
+              </AppButton>
+            </Link>
+          </Space>
+        )}
       </Flex>
     </div>
   );
