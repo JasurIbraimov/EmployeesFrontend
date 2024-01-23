@@ -14,6 +14,7 @@ export interface UserData {
   name: string;
 }
 export type LoginUserData = Omit<UserData, "name">;
+export type RegisterUserData = Omit<UserData, "id">;
 export type ResponseLoginData = UserData & { token: string };
 export enum HTTPMethods {
   GET = "GET",

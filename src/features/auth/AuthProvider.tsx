@@ -1,9 +1,10 @@
 import { useCurrentQuery } from "../../app/services/auth";
+import AppLoader from "../../components/AppLoader";
 
 const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const { isLoading } = useCurrentQuery();
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <AppLoader />;
   }
   return children;
 };

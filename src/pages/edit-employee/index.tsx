@@ -12,6 +12,7 @@ import routes from "../../routes";
 import { isErrorWithMessage } from "../../utils/error";
 import { Flex, Result, Spin } from "antd";
 import AppButton from "../../components/AppButton";
+import AppLoader from "../../components/AppLoader";
 const EditEmployee = () => {
   const { id } = useParams<{ id: string }>();
   const [error, setError] = useState<string | null>(null);
@@ -42,9 +43,7 @@ const EditEmployee = () => {
   return (
     <AppLayout>
       {isLoading ? (
-        <Flex align="center" justify="center">
-          <Spin size="large" />
-        </Flex>
+        <AppLoader />
       ) : !data ? (
         <Result
           title={"Employee not found"}

@@ -13,6 +13,7 @@ import AppButton from "../../components/AppButton";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import ErrorMessage from "../../components/ErrorMessage";
 import { isErrorWithMessage } from "../../utils/error";
+import AppLoader from "../../components/AppLoader";
 const EmployeeDetail = () => {
   const { id } = useParams<{ id: string }>();
 
@@ -53,9 +54,7 @@ const EmployeeDetail = () => {
   return (
     <AppLayout>
       {isLoading ? (
-        <Flex align="center" justify="center">
-          <Spin size="large" />
-        </Flex>
+        <AppLoader />
       ) : !data ? (
         <Result
           title={"Employee not found"}

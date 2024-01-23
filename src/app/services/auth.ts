@@ -3,7 +3,7 @@ import {
   HTTPMethods,
   ResponseLoginData,
   LoginUserData,
-  UserData,
+  RegisterUserData,
 } from "./types";
 
 enum ENDPOINTS {
@@ -21,7 +21,7 @@ export const authApi = api.injectEndpoints({
         body: userData,
       }),
     }),
-    register: builder.mutation<ResponseLoginData, UserData>({
+    register: builder.mutation<ResponseLoginData, RegisterUserData>({
       query: (userData) => ({
         url: ENDPOINTS.REGISTER,
         body: userData,

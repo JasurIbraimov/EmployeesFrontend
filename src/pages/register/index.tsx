@@ -3,16 +3,43 @@ import AppLayout from "../../components/AppLayout";
 import AppInput from "../../components/AppInput";
 import PasswordInput from "../../components/PasswordInput";
 import AppButton from "../../components/AppButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import routes from "../../routes";
+import { useState } from "react";
+import { useRegisterMutation } from "../../app/services/auth";
+import { RegisterUserData } from "../../app/services/types";
+import { isErrorWithMessage } from "../../utils/error";
+import ErrorMessage from "../../components/ErrorMessage";
 const Register = () => {
+  const navigate = useNavigate();
+  const [error, setError] = useState<string | null>();
+  const [registerUser] = useRegisterMutation();
+  const [loading, setLoading] = useState(false);
+
+  const handleRegister = async (data: RegisterUserData) => {
+    setLoading(true);
+    try {
+      await registerUser(data).unwrap();
+      navigate(routes.employees);
+    } catch (error) {
+      const isError = isErrorWithMessage(error);
+      if (isError) {
+        setError(error.data.message);
+      } else {
+        setError("Unknown error");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <AppLayout>
       <Flex vertical align={"center"} justify={"center"}>
         <Typography.Title level={3}>Create an account</Typography.Title>
-        <Form style={{ width: "70%" }} onFinish={() => {}}>
+        <Form style={{ width: "70%" }} onFinish={handleRegister}>
           <AppInput name="email" type="email" placeholder="Your email" />
-          <AppInput name="username" placeholder="Your username" />
+          <AppInput name="name" placeholder="Your username" />
           <PasswordInput
             name="password"
             dependencies={[]}
@@ -24,7 +51,7 @@ const Register = () => {
             placeholder="Confirm password"
           />
 
-          <AppButton htmlType="submit" type="primary">
+          <AppButton loading={loading} htmlType="submit" type="primary">
             Register
           </AppButton>
         </Form>
@@ -36,6 +63,8 @@ const Register = () => {
             </Link>
           </Typography.Text>
         </Space>
+
+        {error && <ErrorMessage message={error} />}
       </Flex>
     </AppLayout>
   );
