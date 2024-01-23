@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AppLayout from "../../components/AppLayout";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   useDeleteEmployeeMutation,
   useGetEmployeeQuery,
@@ -8,7 +8,7 @@ import {
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/auth/authSlice";
 import routes from "../../routes";
-import { Descriptions, Flex, Result, Spin, Divider, Space, Modal } from "antd";
+import { Descriptions, Result, Divider, Space, Modal } from "antd";
 import AppButton from "../../components/AppButton";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import ErrorMessage from "../../components/ErrorMessage";

@@ -10,7 +10,7 @@ import {
 import { EmployeeData } from "../../app/services/types";
 import routes from "../../routes";
 import { isErrorWithMessage } from "../../utils/error";
-import { Flex, Result, Spin } from "antd";
+import { Result } from "antd";
 import AppButton from "../../components/AppButton";
 import AppLoader from "../../components/AppLoader";
 const EditEmployee = () => {
