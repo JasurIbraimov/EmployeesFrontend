@@ -5,7 +5,7 @@ const ErrorMessage = ({
   message,
   onClose,
 }: {
-  message?: string;
+  message?: string | null;
   onClose?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   if (!message) return null;

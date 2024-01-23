@@ -2,16 +2,24 @@ import {
   TeamOutlined,
   UserAddOutlined,
   LoginOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 import styles from "./index.module.css";
 import { Space, Flex } from "antd";
 import AppButton from "../AppButton";
 import { Link } from "react-router-dom";
 import routes from "../../routes";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectUser } from "../../features/auth/authSlice";
 const AppHeader = () => {
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    localStorage.removeItem("TOKEN");
+  };
+
   return (
     <div className={styles.header}>
       <Flex align="center" justify="space-between">
@@ -26,7 +34,15 @@ const AppHeader = () => {
           </Link>
         </Space>
 
-        {!user && (
+        {user ? (
+          <AppButton
+            type="default"
+            onClick={handleLogout}
+            icon={<LogoutOutlined />}
+          >
+            Log out
+          </AppButton>
+        ) : (
           <Space className={styles.space}>
             <Link to={routes.register}>
               <AppButton

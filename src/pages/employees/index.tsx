@@ -38,7 +38,7 @@ const Employees = () => {
     <AppLayout>
       <AppButton
         type="primary"
-        onClick={() => null}
+        onClick={() => navigate(routes.employeesAdd)}
         icon={<PlusCircleTwoTone />}
       >
         Add Employee
@@ -46,7 +46,7 @@ const Employees = () => {
 
       <Table
         onRow={(record) => ({
-          onClick: () => navigate(`${routes.employees}/${record.id}`),
+          onClick: () => navigate(`${routes.employeeDetail}/${record.id}`),
         })}
         style={{ marginTop: "30px" }}
         rowKey={(record) => record.id}

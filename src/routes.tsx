@@ -5,8 +5,8 @@ import { Navigate } from "react-router-dom";
 
 const Path = {
   employees: "/",
+  employeeDetail: "/employees",
   employeesAdd: "/employees/add",
-  employeesDelete: "/employees/delete",
   employeesEdit: "/employees/edit",
   status: "/status",
   login: "/login",
@@ -31,6 +31,14 @@ export const publicRoutes = [
 
 export const privateRoutes = [
   {
+    path: Path.employeeDetail + "/:id",
+    element: (
+      <PrivateRoute>
+        <Pages.EmployeeDetail />
+      </PrivateRoute>
+    ),
+  },
+  {
     path: Path.employees,
     element: (
       <PrivateRoute>
@@ -38,32 +46,25 @@ export const privateRoutes = [
       </PrivateRoute>
     ),
   },
+
   {
     path: Path.employeesAdd,
     element: (
       <PrivateRoute>
-        <h1>Employees add</h1>
+        <Pages.AddEmployee />
       </PrivateRoute>
     ),
   },
   {
-    path: Path.employeesDelete,
+    path: Path.employeesEdit + "/:id",
     element: (
       <PrivateRoute>
-        <h1>Employees delete</h1>
+        <Pages.EditEmployee />
       </PrivateRoute>
     ),
   },
   {
-    path: Path.employeesEdit,
-    element: (
-      <PrivateRoute>
-        <h1>Employees edit</h1>
-      </PrivateRoute>
-    ),
-  },
-  {
-    path: Path.status,
+    path: Path.status + "/:status",
     element: (
       <PrivateRoute>
         <Pages.Status />
