@@ -9,7 +9,6 @@ import AuthProvider from "./features/auth/AuthProvider";
 import { privateRoutes, publicRoutes } from "./routes";
 const container = document.getElementById("root")!;
 const root = createRoot(container);
-
 const router = createBrowserRouter([...publicRoutes, ...privateRoutes]);
 root.render(
   <React.StrictMode>

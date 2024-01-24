@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { EmployeeData } from "../../app/services/types";
-import { Card, Flex, Space, Typography, Form } from "antd";
+import { Flex, Typography, Form } from "antd";
 import AppInput from "../AppInput";
 import AppButton from "../AppButton";
 import ErrorMessage from "../ErrorMessage";

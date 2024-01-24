@@ -15,7 +15,7 @@ import routes from "../../routes";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [loginUser, loginUserResult] = useLoginMutation();
+  const [loginUser] = useLoginMutation();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
